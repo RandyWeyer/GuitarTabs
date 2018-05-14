@@ -25,7 +25,8 @@ namespace GuitarTab
 
         public void Configure(IApplicationBuilder app)
         {
-          app.UseDeveloperExceptionPage(); // for debugging
+            app.UseStaticFiles();
+            app.UseDeveloperExceptionPage(); // for debugging
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
