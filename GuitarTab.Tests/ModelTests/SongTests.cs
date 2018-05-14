@@ -37,5 +37,30 @@ namespace GuitarTab.Tests
       //Assert
       CollectionAssert.AreEqual(songList, songResult);
     }
+    [TestMethod]
+    public void UpdateSong_SongObjectShouldUpdate_True()
+    {
+      Song newSong = new Song("This Is A Song", 1, "XYZ");
+      newSong.Save();
+
+      newSong.UpdateSong("This Is Also A Song", "ZZZZ");
+      Song foundSong = Song.Find(newSong.GetId());
+
+      Assert.AreEqual("This Is Also A Song", foundSong.GetName());
+    }
+    [TestMethod]
+    public void Delete_DeletesSongInDataBase_Songss()
+    {
+      Song testSong = new Song("This Is A Song", 1, "XYZ");
+      testSong.Save();
+      Song otherSong = new Song("This Is Also A Song", 2, "ZZZZ");
+      otherSong.Save();
+
+      testSong.Delete();
+      List<Song> result = Song.GetAll();
+      List<Song> expected = new List<Song>{otherSong};
+
+      CollectionAssert.AreEqual(expected, result);
+    }
   }
 }
