@@ -1,0 +1,13 @@
+/Users/Guest/Desktop/GuitarTabs/GuitarTab.Tests/bin/Debug/netcoreapp1.1/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+/Users/Guest/Desktop/GuitarTabs/GuitarTab.Tests/bin/Debug/netcoreapp1.1/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+/Users/Guest/Desktop/GuitarTabs/GuitarTab.Tests/bin/Debug/netcoreapp1.1/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+/Users/Guest/Desktop/GuitarTabs/GuitarTab.Tests/bin/Debug/netcoreapp1.1/guitartab.tests.deps.json
+/Users/Guest/Desktop/GuitarTabs/GuitarTab.Tests/bin/Debug/netcoreapp1.1/guitartab.tests.runtimeconfig.json
+/Users/Guest/Desktop/GuitarTabs/GuitarTab.Tests/bin/Debug/netcoreapp1.1/guitartab.tests.runtimeconfig.dev.json
+/Users/Guest/Desktop/GuitarTabs/GuitarTab.Tests/bin/Debug/netcoreapp1.1/guitartab.tests.dll
+/Users/Guest/Desktop/GuitarTabs/GuitarTab.Tests/bin/Debug/netcoreapp1.1/guitartab.tests.pdb
+/Users/Guest/Desktop/GuitarTabs/GuitarTab.Tests/bin/Debug/netcoreapp1.1/guitartab.dll
+/Users/Guest/Desktop/GuitarTabs/GuitarTab.Tests/bin/Debug/netcoreapp1.1/guitartab.pdb
+/Users/Guest/Desktop/GuitarTabs/GuitarTab.Tests/obj/Debug/netcoreapp1.1/guitartab.tests.AssemblyInfo.cs
+/Users/Guest/Desktop/GuitarTabs/GuitarTab.Tests/obj/Debug/netcoreapp1.1/guitartab.tests.dll
+/Users/Guest/Desktop/GuitarTabs/GuitarTab.Tests/obj/Debug/netcoreapp1.1/guitartab.tests.pdb
