@@ -37,5 +37,16 @@ namespace GuitarTab.Tests
       //Assert
       CollectionAssert.AreEqual(artistList, artistResult);
     }
+    [TestMethod]
+    public void UpdateArtist_ArtistObjectShouldUpdate_True()
+    {
+      Artist newArtist = new Artist("Band Name");
+      newArtist.Save();
+
+      newArtist.UpdateArtist("Not the same name");
+      Artist foundArtist = Artist.Find(newArtist.GetId());
+
+      Assert.AreEqual(newArtist.GetName(), foundArtist.GetName());
+    }
   }
 }

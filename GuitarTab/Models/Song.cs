@@ -111,6 +111,72 @@ namespace GuitarTab.Models
           conn.Dispose();
       }
     }
+    public void UpdateSong(string songName, string songTab)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"UPDATE songs SET song_name = @songName, tab = @songTab WHERE id = @searchId;";
+
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@searchId";
+      searchId.Value = _id;
+      cmd.Parameters.Add(searchId);
+
+      MySqlParameter name = new MySqlParameter();
+      name.ParameterName = "@songName";
+      name.Value = songName;
+      cmd.Parameters.Add(name);
+
+      MySqlParameter tab = new MySqlParameter();
+      tab.ParameterName = "@songTab";
+      tab.Value = songTab;
+      cmd.Parameters.Add(tab);
+
+      cmd.ExecuteNonQuery();
+      _songName = songName;
+      _tab = songTab;
+
+      if(conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+    public static Song Find(int song_id)
+    {
+        MySqlConnection conn = DB.Connection();
+        conn.Open();
+        var cmd = conn.CreateCommand() as MySqlCommand;
+        cmd.CommandText = @"SELECT * FROM songs WHERE id = (@searchId);";
+
+        MySqlParameter searchId = new MySqlParameter();
+        searchId.ParameterName = "@searchId";
+        searchId.Value = song_id;
+        cmd.Parameters.Add(searchId);
+
+        var rdr = cmd.ExecuteReader() as MySqlDataReader;
+        int songId = 0;
+        string songName = "";
+        int songArtist = 0;
+        string songTab = "";
+
+        while(rdr.Read())
+        {
+          songId = rdr.GetInt32(0);
+          songName = rdr.GetString(1);
+          songArtist = rdr.GetInt32(2);
+          songTab = rdr.GetString(3);
+        }
+
+        Song newSong = new Song(songName, songArtist, songTab, songId);
+        conn.Close();
+        if (conn != null)
+        {
+            conn.Dispose();
+        }
+
+        return newSong;
+    }
     public static void DeleteAll()
     {
         MySqlConnection conn = DB.Connection();

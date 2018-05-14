@@ -85,6 +85,62 @@ namespace GuitarTab.Models
           conn.Dispose();
       }
     }
+    public void UpdateArtist(string artistName)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"UPDATE artists SET artist_name = @artistName WHERE id = @searchId;";
+
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@searchId";
+      searchId.Value = _id;
+      cmd.Parameters.Add(searchId);
+
+      MySqlParameter name = new MySqlParameter();
+      name.ParameterName = "@artistName";
+      name.Value = artistName;
+      cmd.Parameters.Add(name);
+
+      cmd.ExecuteNonQuery();
+      _artistName = artistName;
+
+      if(conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+    public static Artist Find(int artist_id)
+    {
+        MySqlConnection conn = DB.Connection();
+        conn.Open();
+        var cmd = conn.CreateCommand() as MySqlCommand;
+        cmd.CommandText = @"SELECT * FROM artists WHERE id = (@searchId);";
+
+        MySqlParameter searchId = new MySqlParameter();
+        searchId.ParameterName = "@searchId";
+        searchId.Value = artist_id;
+        cmd.Parameters.Add(searchId);
+
+        var rdr = cmd.ExecuteReader() as MySqlDataReader;
+        int id = 0;
+        string artistName = "";
+
+        while(rdr.Read())
+        {
+          id = rdr.GetInt32(0);
+          artistName = rdr.GetString(1);
+        }
+
+        Artist newArtist = new Artist(artistName, id);
+        conn.Close();
+        if (conn != null)
+        {
+            conn.Dispose();
+        }
+
+        return newArtist;
+    }
     public static void DeleteAll()
     {
         MySqlConnection conn = DB.Connection();
