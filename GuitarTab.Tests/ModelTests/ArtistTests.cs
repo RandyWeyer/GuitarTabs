@@ -48,5 +48,19 @@ namespace GuitarTab.Tests
 
       Assert.AreEqual(newArtist.GetName(), foundArtist.GetName());
     }
+    [TestMethod]
+    public void Delete_DeletesArtistInDataBase_Artistss()
+    {
+      Artist testArtist = new Artist("Tame Impala");
+      testArtist.Save();
+      Artist otherArtist = new Artist("Kanye West");
+      otherArtist.Save();
+
+      testArtist.Delete();
+      List<Artist> result = Artist.GetAll();
+      List<Artist> expected = new List<Artist>{otherArtist};
+
+      CollectionAssert.AreEqual(expected, result);
+    }
   }
 }

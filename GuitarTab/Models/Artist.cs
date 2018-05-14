@@ -141,6 +141,24 @@ namespace GuitarTab.Models
 
         return newArtist;
     }
+    public void Delete()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"DELETE FROM artists WHERE id = @artistId;";
+
+      MySqlParameter artistIdParameter = new MySqlParameter();
+      artistIdParameter.ParameterName = "@artistId";
+      artistIdParameter.Value = this.GetId();
+      cmd.Parameters.Add(artistIdParameter);
+
+      cmd.ExecuteNonQuery();
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
     public static void DeleteAll()
     {
         MySqlConnection conn = DB.Connection();

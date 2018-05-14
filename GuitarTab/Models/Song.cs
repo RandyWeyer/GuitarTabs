@@ -167,7 +167,6 @@ namespace GuitarTab.Models
           songArtist = rdr.GetInt32(2);
           songTab = rdr.GetString(3);
         }
-
         Song newSong = new Song(songName, songArtist, songTab, songId);
         conn.Close();
         if (conn != null)
@@ -176,6 +175,24 @@ namespace GuitarTab.Models
         }
 
         return newSong;
+    }
+    public void Delete()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"DELETE FROM songs WHERE id = @songId;";
+
+      MySqlParameter songIdParameter = new MySqlParameter();
+      songIdParameter.ParameterName = "@songId";
+      songIdParameter.Value = this.GetId();
+      cmd.Parameters.Add(songIdParameter);
+
+      cmd.ExecuteNonQuery();
+      if (conn != null)
+      {
+        conn.Close();
+      }
     }
     public static void DeleteAll()
     {
