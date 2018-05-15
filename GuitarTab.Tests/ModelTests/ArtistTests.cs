@@ -67,7 +67,7 @@ namespace GuitarTab.Tests
     {
       Artist testArtist = new Artist("Rezz");
       testArtist.Save();
-      Artist newArtist = Artist.Search("Rez");
+      Artist newArtist = Artist.Search("RezZ");
       Console.WriteLine("zzzzzz" + newArtist.GetName());
 
       Assert.AreEqual(testArtist, newArtist);
