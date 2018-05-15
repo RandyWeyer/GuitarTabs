@@ -12,6 +12,8 @@ var noteType = "";
 var noteFret = "";
 var noteString = "";
 
+var TabOutput = "";
+
 
 function ChooseNoteType(currentNoteType){
   noteType = currentNoteType;
@@ -26,20 +28,16 @@ function ChooseNoteString(){
   console.log(noteString);
 }
 function ConstructNote(){
-  finalNote = noteType + noteFret + "/" + noteString;
+  finalNote = noteType + noteFret + "/" + noteString + "";
   songArr.push(finalNote);
   console.log(finalNote);
 }
 
 
-
 $(document).ready(function(){
   // $("#note-form").submit(function(event) {
   // event.preventDefault();
-
-
-
-
+  console.log($(".editor").val());
 
     $("button#whole-note").click(function(event) {
       currentNoteType = wholeNote;
@@ -74,15 +72,22 @@ $(document).ready(function(){
       ChooseNoteType(currentNoteType);
       });
 
+function update(newNoteArray){
+    $(".editor").val($(".editor").val() + newNoteArray[newNoteArray.length-1]);
+    $('.editor').focus();
+    $(".editor").change();
+}
     $("button#add-note").click(function(event) {
         console.log(noteType);
         console.log(noteFret);
         console.log(noteString);
         ConstructNote();
+
+        update(songArr);
+
+
+
+        $("#tab-output").text(songArr.join());
+        console.log(songArr);
       });
-
-
-
-
-  // });
 });
