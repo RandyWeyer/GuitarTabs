@@ -67,10 +67,13 @@ namespace GuitarTab.Tests
     {
       Artist testArtist = new Artist("Rezz");
       testArtist.Save();
-      Artist newArtist = Artist.Search("Rez");
-      Console.WriteLine("zzzzzz" + newArtist.GetName());
+      Artist otherArtist = new Artist("Rezzer");
+      otherArtist.Save();
 
-      Assert.AreEqual(testArtist, newArtist);
+      List<Artist> result = Artist.Search("Rez");
+      List<Artist> expected = new List<Artist>{testArtist, otherArtist};
+      
+      CollectionAssert.AreEqual(result, expected);
     }
   }
 }

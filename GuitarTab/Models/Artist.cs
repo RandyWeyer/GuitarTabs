@@ -141,8 +141,9 @@ namespace GuitarTab.Models
 
         return newArtist;
     }
-    public static Artist Search(string artist_name)
+    public static List<Artist> Search(string artist_name)
     {
+        List<Artist> allFoundArtists = new List<Artist> {};
         MySqlConnection conn = DB.Connection();
         conn.Open();
         var cmd = conn.CreateCommand() as MySqlCommand;
@@ -161,16 +162,17 @@ namespace GuitarTab.Models
         {
           id = rdr.GetInt32(0);
           artistName = rdr.GetString(1);
+          Artist newArtist = new Artist(artistName, id);
+          allFoundArtists.Add(newArtist);
         }
 
-        Artist newArtist = new Artist(artistName, id);
         conn.Close();
         if (conn != null)
         {
             conn.Dispose();
         }
 
-        return newArtist;
+        return allFoundArtists;
     }
     public void Delete()
     {
