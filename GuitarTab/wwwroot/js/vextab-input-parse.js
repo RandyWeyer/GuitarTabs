@@ -9,63 +9,80 @@ var eighthRest = ":8 ## "
 
 var songArr = [];
 var noteType = "";
-var noteString = "";
 var noteFret = "";
+var noteString = "";
 
-
-whole-note
-half-note
-quarter-note
-eighth-note
-sixteenth-note
-32nd-note
-quarter-rest
-eighth-rest
 
 function ChooseNoteType(currentNoteType){
-  noteParameter = currentNoteType;
+  noteType = currentNoteType;
+  console.log(noteType);
 }
-function ChooseNoteString(currentNoteString){
-  noteString = currentNoteString;
+function ChooseNoteFret(){
+  noteFret = document.getElementById("guitar-fret-selection").value;
+  console.log(noteFret);
 }
-function ChooseNoteFret(currentNoteFret){
-  noteFret = currentNoteFret;
+function ChooseNoteString(){
+  noteString = document.getElementById("guitar-string-selection").value;
+  console.log(noteString);
 }
-function ConstructNote(currentNote){
-  finalNote = noteType + noteString + "/" + noteFret;
+function ConstructNote(){
+  finalNote = noteType + noteFret + "/" + noteString;
+  songArr.push(finalNote);
+  console.log(finalNote);
 }
 
 
 
 $(document).ready(function(){
-
-  $("button#whole-note").click(function(event) {
-    ChooseNoteType(currentNoteType);
-    });
-  $("button#half-note").click(function(event) {
-    ChooseNote(currentNoteType);
-    });
-  $("button#quarter-note").click(function(event) {
-    ChooseNote(currentNoteType);
-    });
-  $("button#eighth-note").click(function(event) {
-    ChooseNote(currentNoteType);
-    });
-  $("button#sixteenth-note").click(function(event) {
-    ChooseNote(currentNoteType);
-    });
-  $("button#thirty-second-note").click(function(event) {
-    ChooseNote(currentNoteType);
-    });
-  $("button#quarter-rest").click(function(event) {
-    ChooseNote(currentNoteType);
-    });
-  $("button#eighth-rest").click(function(event) {
-    ChooseNote(currentNoteType);
-    });
+  // $("#note-form").submit(function(event) {
+  // event.preventDefault();
 
 
 
 
 
+    $("button#whole-note").click(function(event) {
+      currentNoteType = wholeNote;
+      ChooseNoteType(currentNoteType);
+      });
+    $("button#half-note").click(function(event) {
+      currentNoteType = halfNote;
+      ChooseNoteType(currentNoteType);
+      });
+    $("button#quarter-note").click(function(event) {
+      currentNoteType = quarterNote;
+      ChooseNoteType(currentNoteType);
+      });
+    $("button#eighth-note").click(function(event) {
+      currentNoteType = eighthNote;
+      ChooseNoteType(currentNoteType);
+      });
+    $("button#sixteenth-note").click(function(event) {
+      currentNoteType = sixteenthNote;
+      ChooseNoteType(currentNoteType);
+      });
+    $("button#thirty-second-note").click(function(event) {
+      currentNoteType = thirtySecondNote;
+      ChooseNoteType(currentNoteType);
+      });
+    $("button#quarter-rest").click(function(event) {
+      currentNoteType = quarterRest;
+      ChooseNoteType(currentNoteType);
+      });
+    $("button#eighth-rest").click(function(event) {
+      currentNoteType = eighthRest;
+      ChooseNoteType(currentNoteType);
+      });
+
+    $("button#add-note").click(function(event) {
+        console.log(noteType);
+        console.log(noteFret);
+        console.log(noteString);
+        ConstructNote();
+      });
+
+
+
+
+  // });
 });
