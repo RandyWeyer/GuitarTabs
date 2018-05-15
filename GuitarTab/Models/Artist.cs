@@ -141,6 +141,37 @@ namespace GuitarTab.Models
 
         return newArtist;
     }
+    public static Artist Search(string artist_name)
+    {
+        MySqlConnection conn = DB.Connection();
+        conn.Open();
+        var cmd = conn.CreateCommand() as MySqlCommand;
+        cmd.CommandText = @"SELECT * FROM artists WHERE artist_name LIKE '@searchName%';";
+
+        MySqlParameter searchName = new MySqlParameter();
+        searchName.ParameterName = "@searchName%";
+        searchName.Value = artist_name;
+        cmd.Parameters.Add(searchName);
+
+        var rdr = cmd.ExecuteReader() as MySqlDataReader;
+        int id = 0;
+        string artistName = "";
+
+        while(rdr.Read())
+        {
+          id = rdr.GetInt32(0);
+          artistName = rdr.GetString(1);
+        }
+
+        Artist newArtist = new Artist(artistName, id);
+        conn.Close();
+        if (conn != null)
+        {
+            conn.Dispose();
+        }
+
+        return newArtist;
+    }
     public void Delete()
     {
       MySqlConnection conn = DB.Connection();

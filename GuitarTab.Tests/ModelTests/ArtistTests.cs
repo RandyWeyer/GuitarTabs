@@ -62,5 +62,15 @@ namespace GuitarTab.Tests
 
       CollectionAssert.AreEqual(expected, result);
     }
+    [TestMethod]
+    public void Search_SearchArtistInDatabase_Works()
+    {
+      Artist testArtist = new Artist("Rezz");
+      testArtist.Save();
+      Artist newArtist = Artist.Search("Rez");
+      Console.WriteLine("zzzzzz" + newArtist.GetName());
+
+      Assert.AreEqual(testArtist, newArtist);
+    }
   }
 }
