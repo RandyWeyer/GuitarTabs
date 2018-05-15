@@ -9,22 +9,26 @@ var eighthRest = ":8 ## "
 
 var songArr = [];
 var noteType = "";
-var noteString = "";
 var noteFret = "";
+var noteString = "";
 
 
 function ChooseNoteType(currentNoteType){
-  noteParameter = currentNoteType;
-  console.log(noteParameter);
+  noteType = currentNoteType;
+  console.log(noteType);
 }
-function ChooseNoteString(currentNoteString){
-  noteString = currentNoteString;
+function ChooseNoteFret(){
+  noteFret = document.getElementById("guitar-fret-selection").value;
+  console.log(noteFret);
 }
-function ChooseNoteFret(currentNoteFret){
-  noteFret = currentNoteFret;
+function ChooseNoteString(){
+  noteString = document.getElementById("guitar-string-selection").value;
+  console.log(noteString);
 }
-function ConstructNote(currentNote){
-  finalNote = noteType + noteString + "/" + noteFret;
+function ConstructNote(){
+  finalNote = noteType + noteFret + "/" + noteString;
+  songArr.push(finalNote);
+  console.log(finalNote);
 }
 
 
@@ -33,8 +37,9 @@ $(document).ready(function(){
   // $("#note-form").submit(function(event) {
   // event.preventDefault();
 
-    var inputtedFret = $("input#guitar-fret-seletion").val();
-    var inputtedString = $("input#guitar-string-seletction").val();
+
+
+
 
     $("button#whole-note").click(function(event) {
       currentNoteType = wholeNote;
@@ -67,6 +72,13 @@ $(document).ready(function(){
     $("button#eighth-rest").click(function(event) {
       currentNoteType = eighthRest;
       ChooseNoteType(currentNoteType);
+      });
+
+    $("button#add-note").click(function(event) {
+        console.log(noteType);
+        console.log(noteFret);
+        console.log(noteString);
+        ConstructNote();
       });
 
 
