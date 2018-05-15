@@ -146,10 +146,10 @@ namespace GuitarTab.Models
         MySqlConnection conn = DB.Connection();
         conn.Open();
         var cmd = conn.CreateCommand() as MySqlCommand;
-        cmd.CommandText = @"SELECT * FROM artists WHERE artist_name LIKE '@searchName%';";
+        cmd.CommandText = @"SELECT * FROM artists WHERE artist_name = (@searchName);";
 
         MySqlParameter searchName = new MySqlParameter();
-        searchName.ParameterName = "@searchName%";
+        searchName.ParameterName = "@searchName";
         searchName.Value = artist_name;
         cmd.Parameters.Add(searchName);
 
