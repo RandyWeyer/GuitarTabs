@@ -20,8 +20,8 @@ namespace GuitarTab.Controllers
 
           Song newSong = new Song(songName, songTab);
           newSong.Save();
-
-          return View();
+          List<Song> allSongs = Song.GetAll();
+          return View("AllSongs", allSongs);
         }
         [HttpGet("/all-songs")]
         public ActionResult AllSongs()

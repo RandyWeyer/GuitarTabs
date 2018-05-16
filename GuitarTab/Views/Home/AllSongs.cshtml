@@ -1,16 +1,18 @@
 @{
   Layout = "_Layout";
 }
-<tr>
-  <th>Tab ID</th>
-  <th>Song Name</th>
-  <th>Artist Name</th>
-</tr>
-@foreach(var song in Model)
-{
+<table style="width=100%">
   <tr>
-    <td>@song.GetId()</td>
-    <td><a href="/song-tab-details/@song.GetId()">@song.GetName()<a/></td>
-    <td>@song.GetArtistId()</td>
+    <th>Tab ID</th>
+    <th>Song Name</th>
+    <th>Artist Name</th>
   </tr>
-}
+  @foreach(var song in Model)
+  {
+    <tr>
+      <td>@song.GetId()</td>
+      <td><a href="/song-tab-details/@song.GetId()">@song.GetName()<a/></td>
+      <td>@song.GetArtistId()</td>
+    </tr>
+  }
+</table>
