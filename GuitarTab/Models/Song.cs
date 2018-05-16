@@ -13,7 +13,7 @@ namespace GuitarTab.Models
     private string _tab;
     private int _id;
 
-    public Song(string name, int artistId, string tab, int id = 0)
+    public Song(string name, string tab, int artistId = 0,int id = 0)
     {
       _songName = name;
       _artistId = artistId;
@@ -70,7 +70,7 @@ namespace GuitarTab.Models
         string name = rdr.GetString(1);
         int artistId = rdr.GetInt32(2);
         string tab = rdr.GetString(3);
-        Song mySong = new Song(name, artistId, tab, id);
+        Song mySong = new Song(name, tab, artistId, id);
         songList.Add(mySong);
       }
       conn.Close();
@@ -167,7 +167,7 @@ namespace GuitarTab.Models
           songArtist = rdr.GetInt32(2);
           songTab = rdr.GetString(3);
         }
-        Song newSong = new Song(songName, songArtist, songTab, songId);
+        Song newSong = new Song(songName, songTab, songArtist, songId);
         conn.Close();
         if (conn != null)
         {
