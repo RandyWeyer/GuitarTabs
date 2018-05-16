@@ -28,9 +28,21 @@ function ChooseNoteString(){
   console.log(noteString);
 }
 function ConstructNote(){
-  finalNote = noteType + noteFret + "/" + noteString + "";
+  finalNote = noteType + noteFret + "/" + noteString + " ";
   songArr.push(finalNote);
   console.log(finalNote);
+}
+function update(newNoteArray){
+    $(".editor").val($(".editor").val() + newNoteArray[newNoteArray.length-1]);
+    $(function() {
+    $('.editor').keydown();
+    $('.editor').keypress();
+    $('.editor').keyup();
+    $('.editor').blur();
+});
+
+$(".editor").trigger('propertychange');
+    $('.editor').blur();
 }
 
 
@@ -72,22 +84,18 @@ $(document).ready(function(){
       ChooseNoteType(currentNoteType);
       });
 
-function update(newNoteArray){
-    $(".editor").val($(".editor").val() + newNoteArray[newNoteArray.length-1]);
-    $('.editor').focus();
-    $(".editor").change();
-}
-    $("button#add-note").click(function(event) {
-        console.log(noteType);
-        console.log(noteFret);
-        console.log(noteString);
-        ConstructNote();
 
-        update(songArr);
+        $("button#add-note").click(function(event) {
+            console.log(noteType);
+            console.log(noteFret);
+            console.log(noteString);
+            ConstructNote();
+
+            update(songArr);
 
 
 
-        $("#tab-output").text(songArr.join());
-        console.log(songArr);
-      });
+            $("#tab-output").text(songArr.join());
+            console.log(songArr);
+          });
 });
