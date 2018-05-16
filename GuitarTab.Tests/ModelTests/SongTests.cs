@@ -27,7 +27,7 @@ namespace GuitarTab.Tests
     public void Save_SavesSongToDb_True()
     {
       //Arrange
-      Song testSong = new Song("Happy Birthday", 1, "tab");
+      Song testSong = new Song("Happy Birthday", "tab");
       testSong.Save();
 
       //Act
@@ -40,7 +40,7 @@ namespace GuitarTab.Tests
     [TestMethod]
     public void UpdateSong_SongObjectShouldUpdate_True()
     {
-      Song newSong = new Song("This Is A Song", 1, "XYZ");
+      Song newSong = new Song("This Is A Song", "XYZ");
       newSong.Save();
 
       newSong.UpdateSong("This Is Also A Song", "ZZZZ");
@@ -51,9 +51,9 @@ namespace GuitarTab.Tests
     [TestMethod]
     public void Delete_DeletesSongInDataBase_Songss()
     {
-      Song testSong = new Song("This Is A Song", 1, "XYZ");
+      Song testSong = new Song("This Is A Song", "XYZ");
       testSong.Save();
-      Song otherSong = new Song("This Is Also A Song", 2, "ZZZZ");
+      Song otherSong = new Song("This Is Also A Song", "ZZZZ");
       otherSong.Save();
 
       testSong.Delete();
@@ -61,6 +61,19 @@ namespace GuitarTab.Tests
       List<Song> expected = new List<Song>{otherSong};
 
       CollectionAssert.AreEqual(expected, result);
+    }
+    [TestMethod]
+    public void Search_SearchSongInDatabase_Works()
+    {
+      Song testSong = new Song("This Is A Song", "XYZ");
+      testSong.Save();
+      Song otherSong = new Song("This Is Also A Song", "ZZZZ");
+      otherSong.Save();
+
+      List<Song> result = Song.Search("Song");
+      List<Song> expected = new List<Song>{testSong, otherSong};
+
+      CollectionAssert.AreEqual(result, expected);
     }
   }
 }
