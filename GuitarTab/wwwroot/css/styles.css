@@ -2,3 +2,7 @@ button img {
   max-height: 50px;
   max-width: 50px;
 }
+
+#tabSave {
+  display: none;
+}

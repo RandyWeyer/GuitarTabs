@@ -97,5 +97,7 @@ $(document).ready(function(){
 
             $("#tab-output").text(songArr.join());
             console.log(songArr);
+            $("#final-tab-output").text("1");
+
           });
 });

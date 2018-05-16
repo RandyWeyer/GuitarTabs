@@ -14,54 +14,72 @@
     tabstave key=A notation=true
     notes <span id="tab-output"></span></div>
 
-<form id="note-form">
+<form id="note-form" action="/store-tab" method="post">
+  <label for="song-name">Song Name:</label>
+  <input id="song-name" name="song-name" type="text">
 
-<button type="button" class="btn btn-link" id="whole-note"><img src="~/img/WholeNote.png"></button>
-<button type="button" class="btn btn-link" id="half-note"><img src="~/img/HalfNote.png"></button>
-<button type="button" class="btn btn-link" id="quarter-note"><img src="~/img/QuarterNote.png"></button>
-<button type="button" class="btn btn-link" id="eighth-note"><img src="~/img/EighthNote.png"></button>
-<button type="button" class="btn btn-link" id="sixteenth-note"><img src="~/img/SixteenthNote.png"></button>
-<button type="button" class="btn btn-link" id="thirty-second-note"><img src="~/img/32ndNote.png"></button>
-<button type="button" class="btn btn-link" id="quarter-rest"><img src="~/img/QuarterRest.png"></button>
-<button type="button" class="btn btn-link" id="eighth-rest"><img src="~/img/EighthRest.png"></button>
+  <button type="button" class="btn btn-link" id="whole-note"><img src="~/img/WholeNote.png"></button>
+  <button type="button" class="btn btn-link" id="half-note"><img src="~/img/HalfNote.png"></button>
+  <button type="button" class="btn btn-link" id="quarter-note"><img src="~/img/QuarterNote.png"></button>
+  <button type="button" class="btn btn-link" id="eighth-note"><img src="~/img/EighthNote.png"></button>
+  <button type="button" class="btn btn-link" id="sixteenth-note"><img src="~/img/SixteenthNote.png"></button>
+  <button type="button" class="btn btn-link" id="thirty-second-note"><img src="~/img/32ndNote.png"></button>
+  <button type="button" class="btn btn-link" id="quarter-rest"><img src="~/img/QuarterRest.png"></button>
+  <button type="button" class="btn btn-link" id="eighth-rest"><img src="~/img/EighthRest.png"></button>
 
-  <label>Fret:</label>
-    <select onchange="ChooseNoteFret()" id='guitar-fret-selection' name='guitar-fret-selection' type='text'>
-      <option value=0>0</option>
-      <option value=1>1</option>
-      <option value=2>2</option>
-      <option value=3>3</option>
-      <option value=4>4</option>
-      <option value=5>5</option>
-      <option value=6>6</option>
-      <option value=7>7</option>
-      <option value=8>8</option>
-      <option value=9>9</option>
-      <option value=10>10</option>
-      <option value=11>11</option>
-      <option value=12>12</option>
-      <option value=13>13</option>
-      <option value=14>14</option>
-      <option value=15>15</option>
-      <option value=16>16</option>
-      <option value=17>17</option>
-      <option value=18>18</option>
-      <option value=19>19</option>
-      <option value=20>20</option>
-      <option value=21>21</option>
-      <option value=22>22</option>
-      <option value=23>23</option>
-      <option value=24>24</option>
-    </select>
-  <label>String:</label>
-    <select onchange="ChooseNoteString()" id='guitar-string-selection' name='guitar-string-selection' type='text'>
-       <option value=1>1</option>
-       <option value=2>2</option>
-       <option value=3>3</option>
-       <option value=4>4</option>
-       <option value=5>5</option>
-       <option value=6>6</option>
-    </select>
+    <label>Fret:</label>
+      <select onchange="ChooseNoteFret()" id='guitar-fret-selection' name='guitar-fret-selection' type='text'>
+        <option value=0>0</option>
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+        <option value=6>6</option>
+        <option value=7>7</option>
+        <option value=8>8</option>
+        <option value=9>9</option>
+        <option value=10>10</option>
+        <option value=11>11</option>
+        <option value=12>12</option>
+        <option value=13>13</option>
+        <option value=14>14</option>
+        <option value=15>15</option>
+        <option value=16>16</option>
+        <option value=17>17</option>
+        <option value=18>18</option>
+        <option value=19>19</option>
+        <option value=20>20</option>
+        <option value=21>21</option>
+        <option value=22>22</option>
+        <option value=23>23</option>
+        <option value=24>24</option>
+      </select>
+    <label>String:</label>
+      <select onchange="ChooseNoteString()" id='guitar-string-selection' name='guitar-string-selection' type='text'>
+         <option value=1>1</option>
+         <option value=2>2</option>
+         <option value=3>3</option>
+         <option value=4>4</option>
+         <option value=5>5</option>
+         <option value=6>6</option>
+      </select>
+      <button type="button" class="btn btn-info" id="add-note">Add Note</button>
+      <button type="submit" class="btn btn-info" id="add-song">Add Song</button>
 </form>
 
-<button type="button" class="btn btn-info" id="add-note">Add Note</button>
+<script>
+  $(document).ready(function() {
+    $("#note-form").submit(function(event) {
+      event.preventDefault();
+      $("#submitTab").val($(".editor").val());
+      $("#submitName").val($("#song-name").val());
+      $("#tabSave").submit();
+    })
+  })
+</script>
+
+<form id="tabSave" action="/store-tab" method="post">
+  <input id="submitName" type="hidden" name="song-name" value="">
+  <input id="submitTab" type="hidden" name="song-tab" value="">
+</form>

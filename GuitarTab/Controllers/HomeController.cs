@@ -12,6 +12,28 @@ namespace GuitarTab.Controllers
         {
             return View();
         }
+        [HttpPost("/store-tab")]
+        public ActionResult StoreTab()
+        {
+          string songName = Request.Form["song-name"];
+          string songTab = Request.Form["song-tab"];
 
+          Song newSong = new Song(songName, songTab);
+          newSong.Save();
+          List<Song> allSongs = Song.GetAll();
+          return View("AllSongs", allSongs);
+        }
+        [HttpGet("/all-songs")]
+        public ActionResult AllSongs()
+        {
+          List<Song> allSongs = Song.GetAll();
+          return View(allSongs);
+        }
+        [HttpGet("/song-tab-details/{id}")]
+        public ActionResult SongDetail(int id)
+        {
+          Song individualSong = Song.Find(id);
+          return View(individualSong);
+        }
     }
 }
