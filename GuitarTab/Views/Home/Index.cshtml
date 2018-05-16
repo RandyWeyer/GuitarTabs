@@ -64,6 +64,7 @@
          <option value=5>5</option>
          <option value=6>6</option>
       </select>
+      <button type="button" class="btn btn-info" id="add-note">Add Note</button>
       <button type="submit" class="btn btn-info" id="add-song">Add Song</button>
 </form>
 
@@ -77,8 +78,6 @@
     })
   })
 </script>
-
-<button type="button" class="btn btn-info" id="add-note">Add Note</button>
 
 <form id="tabSave" action="/store-tab" method="post">
   <input id="submitName" type="hidden" name="song-name" value="">
