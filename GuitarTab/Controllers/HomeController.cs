@@ -23,6 +23,17 @@ namespace GuitarTab.Controllers
 
           return View();
         }
-
+        [HttpGet("/all-songs")]
+        public ActionResult AllSongs()
+        {
+          List<Song> allSongs = Song.GetAll();
+          return View(allSongs);
+        }
+        [HttpGet("/song-tab-details/{id}")]
+        public ActionResult SongDetail(int id)
+        {
+          Song individualSong = Song.Find(id);
+          return View(individualSong);
+        }
     }
 }
