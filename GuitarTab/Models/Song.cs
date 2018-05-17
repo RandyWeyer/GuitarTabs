@@ -105,6 +105,7 @@ namespace GuitarTab.Models
 
       cmd.ExecuteNonQuery();
       _id = (int) cmd.LastInsertedId;
+
       conn.Close();
       if (conn != null)
       {
