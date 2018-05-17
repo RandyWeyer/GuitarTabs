@@ -190,15 +190,13 @@ $(document).ready(function(){
               timeCount=timeSignature;
             }
 
-
             update(songArr);
-
-
-
+            $(".many-fret-string-selection").hide();
+            ($("#many-notes").remove());
+            console.log($("#many-notes").val());
+            $("button#add-multiple-notes").show();
             $("#tab-output").text(songArr.join());
             console.log(songArr);
-            $("#final-tab-output").text("1");
-
           });
 
           $("button#add-multiple-notes").click(function() {
@@ -216,7 +214,8 @@ $(document).ready(function(){
                                       "</div>");
           function multipleNotes(num) {
             for(var x = 0; x<num; x++) {
-              $("#single-notes").prepend("<label>#" + (x+1) + ". Fret:</label>" +
+              $("#single-notes").prepend("<div class='many-fret-string-selection'>" +
+                                          "<label>#" + (x+1) + ". Fret:</label>" +
                                           "<select onchange='ChooseNoteFret()' id='guitar-fret-selection-" + (x+1) + "' name='guitar-fret-selection-" + (x+1) + "' type='text'>" +
                                             "<option value=0>0</option>" +
                                             "<option value=1>1</option>" +
@@ -244,15 +243,16 @@ $(document).ready(function(){
                                             "<option value=23>23</option>" +
                                             "<option value=24>24</option>" +
                                           "</select>" +
-                                        "<label>String:</label>" +
+                                          "<label>String:</label>" +
                                           "<select onchange='ChooseNoteString()' id='guitar-string-selection-" + (x+1) + "' name='guitar-string-selection-" + (x+1) + "' type='text'>" +
-                                             "<option value=1>1</option>" +
-                                             "<option value=2>2</option>" +
-                                             "<option value=3>3</option>" +
-                                             "<option value=4>4</option>" +
-                                             "<option value=5>5</option>" +
-                                             "<option value=6>6</option>" +
+                                            "<option value=1>1</option>" +
+                                            "<option value=2>2</option>" +
+                                            "<option value=3>3</option>" +
+                                            "<option value=4>4</option>" +
+                                            "<option value=5>5</option>" +
+                                            "<option value=6>6</option>" +
                                           "</select>" +
+                                        "</div>" +
                                           "<br>");
             }
           };
