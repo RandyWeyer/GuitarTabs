@@ -9,10 +9,19 @@ var eighthRest = ":8 ## ";
 var newMeasure = "| ";
 var newStaff = "\ntabstave time=4/4 key=C notation=true\nnotes ";
 
+var aMajor = "(2/2.2/3.2/4)";
+var bMajor = "(2/5.4/4.4/3.4/2.2/1)";
+var cMajor = "(1/2.2/4.3/5)";
+var dMajor = "(2/3.3/2.2/1)";
+var eMajor = "(1/3.2/4.2/5)";
+var fMajor = "(1/6.3/5.3/4.2/3.1/2.1/1)";
+var gMajor = "(3/6.2/5.3/1)";
+
 var songArr = [];
 var noteType = "";
 var noteFret = "";
 var noteString = "";
+var chord = "";
 
 var timeSignature=1;
 var noteAmount;
@@ -43,6 +52,21 @@ function CreateNewMeasure(){
 }
 function ConstructNote(){
   finalNote = noteType + noteFret + "/" + noteString + " ";
+}
+
+function ChooseChord(currentChord) {
+  if (noteType==null){
+    noteType = quarterNote;
+  }
+  if (noteAmount==null) {
+    noteAmount = (1/4);
+  }
+  chord = noteType + currentChord;
+}
+
+function ConstructChord() {
+  songArr.push(chord);
+}
 
   // songArr.push(finalNote);  moved this down after the if statement in the add note button
   // timeCount -= noteAmount;
@@ -60,7 +84,7 @@ function ConstructNote(){
   // }
   //
   // console.log(finalNote);
-}
+
 
 function ConstructMultipleNotes() {
   console.log(noteType);
@@ -78,6 +102,8 @@ function ConstructMultipleNotes() {
       finalNote += ".";
     }
   }
+
+
 
   //JOHNS kinda weird suggestion to work from
   // var noteToStore = noteType + ": " + noteFreti + "/" + noteStri
@@ -102,6 +128,21 @@ function test()
   return false;
 }
 
+function measureCounter() {
+  timeCount -= noteAmount;
+
+  if (timeCount < 0){
+
+    CreateNewMeasure();
+    measureCount -= 1;
+    timeCount=timeSignature;
+  }
+  if (measureCount < 0){
+    CreateNewStaff();
+    measureCount=2;
+    timeCount=timeSignature;
+  }
+};
 
 function update(newNoteArray){
     $(".editor").val($(".editor").val() + newNoteArray[newNoteArray.length-1]);
@@ -121,6 +162,7 @@ $(document).ready(function(){
   // $("#note-form").submit(function(event) {
   // event.preventDefault();
   console.log($(".editor").val());
+
 
     $("button#whole-note").click(function(event) {
       currentNoteType = wholeNote;
@@ -257,10 +299,65 @@ $(document).ready(function(){
             }
           };
 
+
           $("button#select-number-of-strings").click(function() {
             $("#many-notes").hide();
             multipleNotes($("#guitar-notes-selection").val());
           });
         });
+
+
+        $("button#a-major").click(function(event) {
+          ChooseChord(aMajor);
+          ConstructChord();
+          measureCounter();
+          update(songArr);
+          console.log(songArr);
+          console.log(chord);
+
+          });
+        $("button#b-major").click(function(event) {
+          ChooseChord(bMajor);
+          ConstructChord();
+          measureCounter();
+          update(songArr);
+
+          });
+        $("button#c-major").click(function(event) {
+          ChooseChord(cMajor);
+          ConstructChord();
+          measureCounter();
+          update(songArr);
+
+          });
+        $("button#d-major").click(function(event) {
+          ChooseChord(dMajor);
+          ConstructChord();
+          measureCounter();
+          update(songArr);
+
+          });
+        $("button#e-major").click(function(event) {
+          ChooseChord(eMajor);
+          ConstructChord();
+          measureCounter();
+          update(songArr);
+
+          });
+        $("button#f-major").click(function(event) {
+          ChooseChord(fMajor);
+          ConstructChord();
+          measureCounter();
+          update(songArr);
+
+          });
+        $("button#g-major").click(function(event) {
+          ChooseChord(gMajor);
+          ConstructChord();
+          measureCounter();
+          update(songArr);
+
+
+          });
 
 });
