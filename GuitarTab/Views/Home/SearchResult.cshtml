@@ -1,0 +1,30 @@
+@{
+  Layout = "_Layout";
+}
+<table style="width=100%">
+  <tr>
+    <th>Tab ID</th>
+    <th>Song Name</th>
+    @if (Model["searchedSong"].Count != 0) {
+      <h3>These are the Songs that match your query</h3>
+      @foreach(var song in Model["searchedSong"])
+      {
+        <tr>
+          <td>@song.GetId()</td>
+          <td><a href="/search/@song.GetId()">@song.GetName()<a/></td>
+        </tr>
+      }
+    }
+    <th>Artist Name</th>
+    <h3>These are the Artists that match your query</h3>
+  @if(Model["searchedArtist"].Count != 0) {
+      @foreach(var artist in Model["searchedArtist"])
+      {
+        <tr>
+          <td>@artist.GetId()</td>
+          <td><a href="/search/@artist.GetId()">@artist.GetName()<a/></td>
+        </tr>
+      }
+    }
+  </tr>
+</table>

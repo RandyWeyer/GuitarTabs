@@ -35,5 +35,17 @@ namespace GuitarTab.Controllers
           Song individualSong = Song.Find(id);
           return View(individualSong);
         }
+        [HttpGet("/search")]
+        public ActionResult SearchResult()
+        {
+          string searchedName = Request.Query["searched"];
+
+          Dictionary<string, object> model = new Dictionary<string, object> {};
+          List<Song> searchedSong = Song.Search(searchedName);
+          List<Artist> searchedArtist = Artist.Search(searchedName);
+          model.Add("searchedSong", searchedSong);
+          model.Add("searchedArtist", searchedArtist);
+          return View("SearchResult", model);
+        }
     }
 }
