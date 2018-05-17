@@ -1,6 +1,7 @@
 ### _GuitarTab_
 ### Version 1.0
-#### By: David Tumpowsky, Randy Weyer, Kristi Hwang, Jim McNamara, Noah Medoff Date: May 17 2018
+#### By: David Tumpowsky, Randy Weyer, Kristi Hwang, Jim McNamara, Noah Medoff
+#### Date: May 17 2018
 
 ##### Description
 _This web applications allows users to create a todo lists_
