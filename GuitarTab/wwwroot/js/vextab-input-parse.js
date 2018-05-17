@@ -45,13 +45,6 @@ $(".editor").trigger('propertychange');
     $('.editor').blur();
 }
 
-function PlaySounds(
-   songArr.forEach(function(noteSound, index) {
-
-   }
-)
-
-
 
 var sixthStringNoFret = new Howl({
   src: ['Audio/lowE-String/0:6.mp3']
@@ -452,6 +445,270 @@ var firstStringTwentyithFret = new Howl({
   src: ['Audio/lowE-String/20:1.mp3']
 });
 
+//plays sound
+function PlayMusic() {
+  songArr.forEach(element) {
+    if (element == "0/6") {
+      sixthStringNoFret.play();
+    } else if (element == "1/6") {
+      sixthStringFirstFret.play();
+    } else if (element == "2/6") {
+      sixthStringSecondFret.play();
+    } else if (element == "3/6") {
+      sixthStringThirdFret.play();
+    } else if (element == "4/6") {
+      sixthStringFourthFret.play();
+    } else if (element == "5/6") {
+      sixthStringFifthFret.play();
+    } else if (element == "6/6") {
+      sixthStringSixthFret.play();
+    } else if (element == "7/6") {
+      sixthStringSeventhFret.play();
+    } else if (element == "8/6") {
+      sixthStringEighthFret.play();
+    } else if (element == "9/6") {
+      sixthStringNinthFret.play();
+    } else if (element == "10/6") {
+      sixthStringTenthFret.play();
+    } else if (element == "11/6") {
+      sixthStringEleventhFret.play();
+    } else if (element == "12/6") {
+      sixthStringTwelfthFret.play();
+    } else if (element == "13/6") {
+      sixthStringThirtheethFret.play();
+    } else if (element == "14/6") {
+      sixthStringFourteenthFret.play();
+    } else if (element == "15/6") {
+      sixthStringFifteenthFret.play();
+    } else if (element == "16/6") {
+      sixthStringSixteenthFret.play();
+    } else if (element == "17/6") {
+      sixthStringSeventeenthFret.play();
+    } else if (element == "18/6") {
+      sixthStringEighteenthFret.play();
+    } else if (element == "19/6") {
+      sixthStringNineteenthFret.play();
+    } else if (element == "20/6") {
+      sixthStringTwentyithFret.play();
+
+    } else if (element == "0/5") {
+      fifthStringNoFret.play();
+    } else if (element == "1/5") {
+      fifthStringFirstFret.play();
+    } else if (element == "2/5") {
+      fifthStringSecondFret.play();
+    } else if (element == "3/5") {
+      fifthStringThirdFret.play();
+    } else if (element == "4/5") {
+      fifthStringFourthFret.play();
+    } else if (element == "5/5") {
+      fifthStringFifthFret.play();
+    } else if (element == "6/5") {
+      fifthStringSixthFret.play();
+    } else if (element == "7/5") {
+      fifthStringSeventhFret.play();
+    } else if (element == "8/5") {
+      fifthStringEighthFret.play();
+    } else if (element == "9/5") {
+      fifthStringNinthFret.play();
+    } else if (element == "10/5") {
+      fifthStringTenthFret.play();
+    } else if (element == "11/5") {
+      fifthStringEleventhFret.play();
+    } else if (element == "12/5") {
+      fifthStringTwelfthFret.play();
+    } else if (element == "13/5") {
+      fifthStringThirtheethFret.play();
+    } else if (element == "14/5") {
+      fifthStringFourteenthFret.play();
+    } else if (element == "15/5") {
+      fifthStringFifteenthFret.play();
+    } else if (element == "16/5") {
+      fifthStringSixteenthFret.play();
+    } else if (element == "17/5") {
+      fifthStringSeventeenthFret.play();
+    } else if (element == "18/5") {
+      fifthStringEighteenthFret.play();
+    } else if (element == "19/5") {
+      fifthStringNineteenthFret.play();
+    } else if (element == "20/5") {
+      fifthStringTwentyithFret.play();
+
+    } else if (element == "0/4") {
+      fourthStringNoFret.play();
+    } else if (element == "1/4") {
+      fourthStringFirstFret.play();
+    } else if (element == "2/4") {
+      fourthStringSecondFret.play();
+    } else if (element == "3/4") {
+      fourthStringThirdFret.play();
+    } else if (element == "4/4") {
+      fourthStringFourthFret.play();
+    } else if (element == "5/4") {
+      fourthStringFifthFret.play();
+    } else if (element == "6/4") {
+      fourthStringSixthFret.play();
+    } else if (element == "7/4") {
+      fourthStringSeventhFret.play();
+    } else if (element == "8/4") {
+      fourthStringEighthFret.play();
+    } else if (element == "9/4") {
+      fourthStringNinthFret.play();
+    } else if (element == "10/4") {
+      fourthStringTenthFret.play();
+    } else if (element == "11/4") {
+      fourthStringEleventhFret.play();
+    } else if (element == "12/4") {
+      fourthStringTwelfthFret.play();
+    } else if (element == "13/4") {
+      fourthStringThirtheethFret.play();
+    } else if (element == "14/4") {
+      fourthStringFourteenthFret.play();
+    } else if (element == "15/4") {
+      fourthStringFifteenthFret.play();
+    } else if (element == "16/4") {
+      fourthStringSixteenthFret.play();
+    } else if (element == "17/4") {
+      fourthStringSeventeenthFret.play();
+    } else if (element == "18/4") {
+      fourthStringEighteenthFret.play();
+    } else if (element == "19/4") {
+      fourthStringNineteenthFret.play();
+    } else if (element == "20/4") {
+      fourthStringTwentyithFret.play();
+
+    } else if (element == "0/3") {
+      thirdStringNoFret.play();
+    } else if (element == "1/3") {
+      thirdStringFirstFret.play();
+    } else if (element == "2/3") {
+      thirdStringSecondFret.play();
+    } else if (element == "3/3") {
+      thirdStringThirdFret.play();
+    } else if (element == "4/3") {
+      thirdStringFourthFret.play();
+    } else if (element == "5/3") {
+      thirdStringFifthFret.play();
+    } else if (element == "6/3") {
+      thirdStringSixthFret.play();
+    } else if (element == "7/3") {
+      thirdStringSeventhFret.play();
+    } else if (element == "8/3") {
+      thirdStringEighthFret.play();
+    } else if (element == "9/3") {
+      thirdStringNinthFret.play();
+    } else if (element == "10/3") {
+      thirdStringTenthFret.play();
+    } else if (element == "11/3") {
+      thirdStringEleventhFret.play();
+    } else if (element == "12/3") {
+      thirdStringTwelfthFret.play();
+    } else if (element == "13/3") {
+      thirdStringThirtheethFret.play();
+    } else if (element == "14/3") {
+      thirdStringFourteenthFret.play();
+    } else if (element == "15/3") {
+      thirdStringFifteenthFret.play();
+    } else if (element == "16/3") {
+      thirdStringSixteenthFret.play();
+    } else if (element == "17/3") {
+      thirdStringSeventeenthFret.play();
+    } else if (element == "18/3") {
+      thirdStringEighteenthFret.play();
+    } else if (element == "19/3") {
+      thirdStringNineteenthFret.play();
+    } else if (element == "20/3") {
+      thirdStringTwentyithFret.play();
+
+    } else if (element == "0/2") {
+      secondStringNoFret.play();
+    } else if (element == "1/2") {
+      secondStringFirstFret.play();
+    } else if (element == "2/2") {
+      secondStringSecondFret.play();
+    } else if (element == "3/2") {
+      secondStringThirdFret.play();
+    } else if (element == "4/2") {
+      secondStringFourthFret.play();
+    } else if (element == "5/2") {
+      secondStringFifthFret.play();
+    } else if (element == "6/2") {
+      secondStringSixthFret.play();
+    } else if (element == "7/2") {
+      secondStringSeventhFret.play();
+    } else if (element == "8/2") {
+      secondStringEighthFret.play();
+    } else if (element == "9/2") {
+      secondStringNinthFret.play();
+    } else if (element == "10/2") {
+      secondStringTenthFret.play();
+    } else if (element == "11/2") {
+      secondStringEleventhFret.play();
+    } else if (element == "12/2") {
+      secondStringTwelfthFret.play();
+    } else if (element == "13/2") {
+      secondStringThirtheethFret.play();
+    } else if (element == "14/2") {
+      secondStringFourteenthFret.play();
+    } else if (element == "15/2") {
+      secondStringFifteenthFret.play();
+    } else if (element == "16/2") {
+      secondStringSixteenthFret.play();
+    } else if (element == "17/2") {
+      secondStringSeventeenthFret.play();
+    } else if (element == "18/2") {
+      secondStringEighteenthFret.play();
+    } else if (element == "19/2") {
+      secondStringNineteenthFret.play();
+    } else if (element == "20/2") {
+      secondStringTwentyithFret.play();
+
+    } else if (element == "0/1") {
+      firstStringNoFret.play();
+    } else if (element == "1/1") {
+      firstStringFirstFret.play();
+    } else if (element == "2/1") {
+      firstStringSecondFret.play();
+    } else if (element == "3/1") {
+      firstStringThirdFret.play();
+    } else if (element == "4/1") {
+      firstStringFourthFret.play();
+    } else if (element == "1/1") {
+      firstStringFifthFret.play();
+    } else if (element == "6/1") {
+      firstStringSixthFret.play();
+    } else if (element == "7/1") {
+      firstStringSeventhFret.play();
+    } else if (element == "8/1") {
+      firstStringEighthFret.play();
+    } else if (element == "9/1") {
+      firstStringNinthFret.play();
+    } else if (element == "10/1") {
+      firstStringTenthFret.play();
+    } else if (element == "11/1") {
+      firstStringEleventhFret.play();
+    } else if (element == "12/1") {
+      firstStringTwelfthFret.play();
+    } else if (element == "13/1") {
+      firstStringThirtheethFret.play();
+    } else if (element == "14/1") {
+      firstStringFourteenthFret.play();
+    } else if (element == "11/1") {
+      firstStringFifteenthFret.play();
+    } else if (element == "16/1") {
+      firstStringSixteenthFret.play();
+    } else if (element == "17/1") {
+      firstStringSeventeenthFret.play();
+    } else if (element == "18/1") {
+      firstStringEighteenthFret.play();
+    } else if (element == "19/1") {
+      firstStringNineteenthFret.play();
+    } else if (element == "20/1") {
+      firstStringTwentyithFret.play();
+    }
+  }
+}
+
 
 
 
@@ -459,53 +716,55 @@ var firstStringTwentyithFret = new Howl({
 
 $(document).ready(function(){
 
-    $("button#whole-note").click(function(event) {
-      currentNoteType = wholeNote;
-      ChooseNoteType(currentNoteType);
-      });
-    $("button#half-note").click(function(event) {
-      currentNoteType = halfNote;
-      ChooseNoteType(currentNoteType);
-      });
-    $("button#quarter-note").click(function(event) {
-      currentNoteType = quarterNote;
-      ChooseNoteType(currentNoteType);
-      });
-    $("button#eighth-note").click(function(event) {
-      currentNoteType = eighthNote;
-      ChooseNoteType(currentNoteType);
-      });
-    $("button#sixteenth-note").click(function(event) {
-      currentNoteType = sixteenthNote;
-      ChooseNoteType(currentNoteType);
-      });
-    $("button#thirty-second-note").click(function(event) {
-      currentNoteType = thirtySecondNote;
-      ChooseNoteType(currentNoteType);
-      });
-    $("button#quarter-rest").click(function(event) {
-      currentNoteType = quarterRest;
-      ChooseNoteType(currentNoteType);
-      });
-    $("button#eighth-rest").click(function(event) {
-      currentNoteType = eighthRest;
-      ChooseNoteType(currentNoteType);
-      });
+  $("button#whole-note").click(function(event) {
+    currentNoteType = wholeNote;
+    ChooseNoteType(currentNoteType);
+    });
+  $("button#half-note").click(function(event) {
+    currentNoteType = halfNote;
+    ChooseNoteType(currentNoteType);
+    });
+  $("button#quarter-note").click(function(event) {
+    currentNoteType = quarterNote;
+    ChooseNoteType(currentNoteType);
+    });
+  $("button#eighth-note").click(function(event) {
+    currentNoteType = eighthNote;
+    ChooseNoteType(currentNoteType);
+    });
+  $("button#sixteenth-note").click(function(event) {
+    currentNoteType = sixteenthNote;
+    ChooseNoteType(currentNoteType);
+    });
+  $("button#thirty-second-note").click(function(event) {
+    currentNoteType = thirtySecondNote;
+    ChooseNoteType(currentNoteType);
+    });
+  $("button#quarter-rest").click(function(event) {
+    currentNoteType = quarterRest;
+    ChooseNoteType(currentNoteType);
+    });
+  $("button#eighth-rest").click(function(event) {
+    currentNoteType = eighthRest;
+    ChooseNoteType(currentNoteType);
+    });
 
 
 
 
-    $("button#add-note").click(function(event) {
-        console.log(noteType);
-        console.log(noteFret);
-        console.log(noteString);
-        ConstructNote();
+  $("button#add-note").click(function(event) {
+      console.log(noteType);
+      console.log(noteFret);
+      console.log(noteString);
+      ConstructNote();
 
-        update(songArr);
+      update(songArr);
 
+      $("#tab-output").text(songArr.join());
+      console.log(songArr);
+  });
 
-
-        $("#tab-output").text(songArr.join());
-        console.log(songArr);
-      });
+    $("button#play-music").click(function(event) {
+        PlayMusic();
+  });
 });
