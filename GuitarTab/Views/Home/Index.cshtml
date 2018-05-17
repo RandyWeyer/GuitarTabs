@@ -17,8 +17,10 @@
 <form id="note-form" action="/store-tab" method="post">
   <label for="song-name">Song Name:</label>
   <input id="song-name" name="song-name" type="text">
+  <br>
+  <label for="song-name">Song Artist:</label>
   <input id="song-artist" name="song-artist" type="text">
-
+  <br>
   <button type="button" class="btn btn-link" id="whole-note"><img src="~/img/WholeNote.png"></button>
   <button type="button" class="btn btn-link" id="half-note"><img src="~/img/HalfNote.png"></button>
   <button type="button" class="btn btn-link" id="quarter-note"><img src="~/img/QuarterNote.png"></button>
@@ -27,11 +29,11 @@
   <button type="button" class="btn btn-link" id="thirty-second-note"><img src="~/img/32ndNote.png"></button>
   <button type="button" class="btn btn-link" id="quarter-rest"><img src="~/img/QuarterRest.png"></button>
   <button type="button" class="btn btn-link" id="eighth-rest"><img src="~/img/EighthRest.png"></button>
-
+  <br>
   <div id="single-notes">
     <label>Fret:</label>
     <select onchange="ChooseNoteFret()" id='guitar-fret-selection-0' name='guitar-fret-selection-0' type='text'>
-      <option value=0>0</option>
+      <option value=0 selected="selected">0</option>
       <option value=1>1</option>
       <option value=2>2</option>
       <option value=3>3</option>
@@ -59,7 +61,7 @@
     </select>
     <label>String:</label>
     <select onchange="ChooseNoteString()" id='guitar-string-selection-0' name='guitar-string-selection-0' type='text'>
-      <option value=1>1</option>
+      <option value=1 selected="selected">1</option>
       <option value=2>2</option>
       <option value=3>3</option>
       <option value=4>4</option>
