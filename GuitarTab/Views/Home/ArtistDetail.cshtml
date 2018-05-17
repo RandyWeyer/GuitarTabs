@@ -1,0 +1,20 @@
+@{
+  Layout = "_Layout";
+}
+
+<div class="jumbotron">
+  <h1>Guitar Tab</h1>
+</div>
+
+<table>
+<tr>
+  <th>Songs by @Model["individualArtist"].GetName()</th>
+</tr>
+
+@foreach(var song in Model["individualSong"])
+{
+  <tr>
+    <td><a href="/song-tab-details/@song.GetId()">@song.GetName()</a></td>
+  </tr>
+}
+</table>

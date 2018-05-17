@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+<table style="width=100%">
+  <tr>
+    <th>Artist Name</th>
+  </tr>
+  @foreach(var artist in Model)
+  {
+    <tr>
+      <td><a href="/artist-details/@artist.GetId()">@artist.GetName()<a/></td>
+    </tr>
+  }
+
+</table>

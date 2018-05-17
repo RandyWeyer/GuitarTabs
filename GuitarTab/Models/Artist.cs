@@ -85,6 +85,35 @@ namespace GuitarTab.Models
           conn.Dispose();
       }
     }
+
+    public List<Song> GetSongs()
+    {
+        MySqlConnection conn = DB.Connection();
+        conn.Open();
+        MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+        cmd.CommandText = @"SELECT * FROM songs WHERE artist_id = @artistId";
+
+        cmd.Parameters.Add(new MySqlParameter("@artistId", _id));
+        MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+        List<Song> songs = new List<Song>{};
+
+        while(rdr.Read())
+        {
+          int songId = rdr.GetInt32(0);
+          string songName = rdr.GetString(1);
+          int songArtist = rdr.GetInt32(2);
+          string songTab = rdr.GetString(3);
+          Song newSong = new Song(songName, songTab, songArtist, songId);
+          songs.Add(newSong);
+        }
+        conn.Close();
+        if (conn != null)
+        {
+            conn.Dispose();
+        }
+        return songs;
+    }
+
     public void UpdateArtist(string artistName)
     {
       MySqlConnection conn = DB.Connection();
