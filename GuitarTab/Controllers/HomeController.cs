@@ -17,8 +17,13 @@ namespace GuitarTab.Controllers
         {
           string songName = Request.Form["song-name"];
           string songTab = Request.Form["song-tab"];
+          string songArtist = Request.Form["song-artist"];
+          Console.WriteLine("test" + songArtist);
 
-          Song newSong = new Song(songName, songTab);
+          Artist newArtist = new Artist(songArtist);
+          Console.WriteLine(newArtist.GetName());
+          newArtist.Save();
+          Song newSong = new Song(songName, songTab, newArtist.GetId());
           newSong.Save();
           List<Song> allSongs = Song.GetAll();
           return View("AllSongs", allSongs);
