@@ -74,7 +74,7 @@ namespace GuitarTab.Models
 
       MySqlParameter name = new MySqlParameter();
       name.ParameterName = "@artistName";
-      name.Value = this._artistName;
+      name.Value = _artistName;
       cmd.Parameters.Add(name);
 
       cmd.ExecuteNonQuery();
@@ -109,6 +109,84 @@ namespace GuitarTab.Models
       {
         conn.Dispose();
       }
+    }
+    public void AddSong(Song newSong)
+    {
+        MySqlConnection conn = DB.Connection();
+        conn.Open();
+        var cmd = conn.CreateCommand() as MySqlCommand;
+        cmd.CommandText = @"INSERT INTO tab_info (song_id, artist_id) VALUES (@songId, @ArtistId);";
+
+        MySqlParameter song_id = new MySqlParameter();
+        song_id.ParameterName = "@SongId";
+        song_id.Value = newSong.GetId();
+        cmd.Parameters.Add(song_id);
+
+        MySqlParameter artist_id = new MySqlParameter();
+        artist_id.ParameterName = "@ArtistId";
+        artist_id.Value = _id;
+        cmd.Parameters.Add(artist_id);
+
+        cmd.ExecuteNonQuery();
+        conn.Close();
+        if (conn != null)
+        {
+            conn.Dispose();
+        }
+    }
+    public List<Song> GetSongs()
+    {
+        MySqlConnection conn = DB.Connection();
+        conn.Open();
+        var cmd = conn.CreateCommand() as MySqlCommand;
+        cmd.CommandText = @"SELECT songs.* FROM artists
+            JOIN tab_info ON (artists.id = tab_info.artist_id)
+            JOIN songs ON (tab_info.song_id = songs.id)
+            WHERE artists.id = @ArtistId;";
+
+        MySqlParameter artistIdParameter = new MySqlParameter();
+        artistIdParameter.ParameterName = "@ArtistId";
+        artistIdParameter.Value = _id;
+        cmd.Parameters.Add(artistIdParameter);
+
+        var rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+        List<int> songIds = new List<int> {};
+        while(rdr.Read())
+        {
+            int songId = rdr.GetInt32(0);
+            songIds.Add(songId);
+        }
+        rdr.Dispose();
+
+        List<Song> songs = new List<Song> {};
+        foreach (int songId in songIds)
+        {
+            var songQuery = conn.CreateCommand() as MySqlCommand;
+            songQuery.CommandText = @"SELECT * FROM songs WHERE id = @SongId;";
+
+            MySqlParameter songIdParameter = new MySqlParameter();
+            songIdParameter.ParameterName = "@SongId";
+            songIdParameter.Value = songId;
+            songQuery.Parameters.Add(songIdParameter);
+
+            var songQueryRdr = songQuery.ExecuteReader() as MySqlDataReader;
+            while(songQueryRdr.Read())
+            {
+                int thisSongId = songQueryRdr.GetInt32(0);
+                string songName = songQueryRdr.GetString(1);
+                string songTab = songQueryRdr.GetString(2);
+                Song foundSong = new Song(songName, songTab, thisSongId);
+                songs.Add(foundSong);
+            }
+            songQueryRdr.Dispose();
+        }
+        conn.Close();
+        if (conn != null)
+        {
+            conn.Dispose();
+        }
+        return songs;
     }
     public static Artist Find(int artist_id)
     {

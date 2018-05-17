@@ -15,6 +15,7 @@ namespace GuitarTab.Tests
     }
     public void Dispose()
     {
+      Song.DeleteAll();
       Artist.DeleteAll();
     }
     [TestMethod]
@@ -72,8 +73,29 @@ namespace GuitarTab.Tests
 
       List<Artist> result = Artist.Search("Rez");
       List<Artist> expected = new List<Artist>{testArtist, otherArtist};
-      
+
       CollectionAssert.AreEqual(result, expected);
+    }
+    [TestMethod]
+    public void GetSongs_ReturnsAllSongs_SongList()
+    {
+      //Arrange
+      Artist testArtist = new Artist("Rezzn");
+      testArtist.Save();
+
+      Song testSong1 = new Song("Songme", "asfasfasf");
+      testSong1.Save();
+
+      Song testSong2 = new Song("Works", "safasfasf");
+      testSong2.Save();
+
+      //Act
+      testArtist.AddSong(testSong1);
+      List<Song> result = testArtist.GetSongs();
+      List<Song> testList = new List<Song> {testSong1};
+
+      //Assert
+      CollectionAssert.AreEqual(testList, result);
     }
   }
 }

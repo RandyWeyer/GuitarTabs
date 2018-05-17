@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 15, 2018 at 06:44 PM
+-- Generation Time: May 17, 2018 at 07:15 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.0.15
 
@@ -42,9 +42,21 @@ CREATE TABLE `artists` (
 CREATE TABLE `songs` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `song_name` varchar(255) NOT NULL,
-  `artist_id` int(11) NOT NULL,
   `tab` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `songs`
+--
+
+INSERT INTO `songs` (`id`, `song_name`, `tab`) VALUES
+(37, 'MEOW', '\r\n    options tab-stems=true tab-stem-direction=down\r\n    tabstave time=4/4 key=C notation=true\r\n    notes :q 2/2 '),
+(38, 'MEOW', '\r\n    options tab-stems=true tab-stem-direction=down\r\n    tabstave time=4/4 key=C notation=true\r\n    notes 2/3 2/3 :8 2/3 '),
+(39, 'MEOW', '\r\n    options tab-stems=true tab-stem-direction=down\r\n    tabstave time=4/4 key=C notation=true\r\n    notes 2/3 '),
+(40, 'MEOW', '\r\n    options tab-stems=true tab-stem-direction=down\r\n    tabstave time=4/4 key=C notation=true\r\n    notes :q 2/3 '),
+(41, 'MEOW', '\r\n    options tab-stems=true tab-stem-direction=down\r\n    tabstave time=4/4 key=C notation=true\r\n    notes :q 2/3 '),
+(42, 'MEOW', '\r\n    options tab-stems=true tab-stem-direction=down\r\n    tabstave time=4/4 key=C notation=true\r\n    notes 2/3 '),
+(43, 'test', '\r\n    options tab-stems=true tab-stem-direction=down\r\n    tabstave time=4/4 key=C notation=true\r\n    notes 2/3 ');
 
 --
 -- Indexes for dumped tables
@@ -72,12 +84,12 @@ ALTER TABLE `songs`
 -- AUTO_INCREMENT for table `artists`
 --
 ALTER TABLE `artists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `songs`
 --
 ALTER TABLE `songs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
